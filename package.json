@@ -1,0 +1,14 @@
+{
+    "name": "@cloud-technology/api",
+    "version": "1.0.0",
+    "description": "",
+    "main": "src/index.js",
+    "scripts": {
+        "start": "node src/index.js"
+    },
+    "type": "module",
+    "dependencies": {
+        "octokit": "^1.7.0",
+        "@cloud-technology/api-library": "cloud-hybrid/api-library#Development"
+    }
+}
