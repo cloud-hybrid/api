@@ -1,6 +1,6 @@
 import { Library } from "@cloud-technology/api-library";
 
-import { Application } from "../index.js";
+import { Application } from "./../index.js";;
 
 const Compression = Library.Compression;
 

@@ -1,6 +1,7 @@
 import { Library } from "@cloud-technology/api-library";
 
-import { Generator } from "./../../utilities/configuration.js";
+import { Generator } from "@cloud-technology/api/src/utilities/configuration.js";
+
 import { Query, Projects, Pages, Empties } from "./projects.js";
 
 export const Controller = Library.Router();

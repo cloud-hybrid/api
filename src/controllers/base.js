@@ -1,12 +1,16 @@
+import * as FS from "fs";
+
 import { Library } from "@cloud-technology/api-library";
 
 import { Generator } from "@cloud-technology/api/src/utilities/configuration.js";
 
-export const Controller = Library.Router();
+const Controller = Library.Router();
 
 Controller.get("/", async (request, response) => {
-    const $ = Generator(request);
-    const Body = $.toJSON();
+    const Package = JSON.parse(FS.readFileSync("package.json"));
+
+    const $ = Generator(request, Package);
+    const Body = Package["version"];
 
     /// HTTP(s) Response
     response.type($.Configuration.Type);
@@ -16,7 +20,15 @@ Controller.get("/", async (request, response) => {
 
     response.shouldKeepAlive = $.Configuration["Keep-Alive"];
 
-    response.send(Body);
+    if (process.env.NODE_ENV !== "production") {
+        response.send(JSON.stringify(Package, null, 4));
+    } else {
+        response.send(JSON.stringify({ Version: Body }, null, 4));
+    }
+});
+
+Controller.get("/health", function (req, res) {
+    res.send("Online");
 });
 
 export default Controller;

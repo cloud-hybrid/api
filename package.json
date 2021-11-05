@@ -8,6 +8,7 @@
     },
     "type": "module",
     "dependencies": {
+        "@cloud-technology/api": "cloud-hybrid/api#Development",
         "@cloud-technology/api-library": "cloud-hybrid/api-library#Development"
     },
     "devDependencies": {
