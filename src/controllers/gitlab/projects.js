@@ -1,4 +1,4 @@
-import { Call } from "./../../utilities/request.js";
+import { Call } from "@cloud-technology/api/src/utilities/request.js";
 
 /***
  *
@@ -50,6 +50,19 @@ export const Query = async (page = 1, items = 1) => {
 
     return $;
 };
+
+/***
+ *
+ * @returns {Promise<number>}
+ *
+ * @constructor
+ *
+ */
+
+export const Total = async () => {
+    const $ = await Query(1, 1);
+    return Number($.Headers["x-total"]);
+}
 
 /***
  *
