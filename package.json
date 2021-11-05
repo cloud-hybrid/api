@@ -10,5 +10,8 @@
     "dependencies": {
         "octokit": "^1.7.0",
         "@cloud-technology/api-library": "cloud-hybrid/api-library#Development"
+    },
+    "devDependencies": {
+        "@types/express": "^4.17.13"
     }
 }

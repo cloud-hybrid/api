@@ -1,14 +1,6 @@
 import { Library } from "@cloud-technology/api-library";
 
-/***
- *
- * @type {Express}
- *
- */
-
 export const Application = Library.Framework();
-
-Application.routes = [];
 
 Application.listen(8080, "localhost", async () => {
     const Import = async () => {
