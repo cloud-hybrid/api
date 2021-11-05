@@ -7,7 +7,7 @@
  *
  */
 
-export const Generator = (request, body = null) => {
+export const Generator = (request, body = null, headers = null) => {
     /***
      *
      * @type {{Headers, URL: {Origin: *, Normalized, Base: *}}}
@@ -15,7 +15,7 @@ export const Generator = (request, body = null) => {
      */
 
     const Request = {
-        Headers: request.headers,
+        Headers: (headers === null) ? request.headers : { ... request.headers, ... headers },
         URL: {
             Base: request.baseUrl,
             Origin: request.originalUrl,
@@ -60,9 +60,5 @@ export const Generator = (request, body = null) => {
         Body: Body
     };
 
-    const Data = { Request, Response, Configuration, Body, toJSON: () => JSON.stringify(Response, null, 4) };
-
-    console.debug(JSON.stringify({ ... Data.Request, ... Data.Response, ... Data.Configuration }, null, 4), "\n");
-
-    return Data;
+    return { Request, Response, Configuration, Body, toJSON: () => JSON.stringify(Response, null, 4) };
 };

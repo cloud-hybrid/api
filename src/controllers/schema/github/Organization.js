@@ -1,32 +1,11 @@
-import { Octokit } from "@cloud-technology/api-library";
+import { Library } from "@cloud-technology/api-library";
 
-const API = new Octokit({ auth: process.env["GitHub-Token"] });
+import { default as flatten } from "./../../../utilities/flatten.js";
 
-/***
- *
- * @param obj {object}
- *
- * @returns {{}}
- *
- */
+/// @octokit/openapi-types/types.d.ts
+const API = new Library.Octokit.Octokit({ auth: process.env["GitHub-Token"] });
 
-const flatten = (obj) => {
-    const _ = {};
 
-    Object.keys(obj).forEach((key, index) => {
-        _[key] = typeof obj[key];
-
-        if ( typeof obj[key] === "object" && obj[key] !== null ) {
-            _[key] = flatten(obj[key]);
-        } else (
-            obj[key] === null
-        ) ? _[key] = null
-            : _[key] = typeof obj[key];
-
-    });
-
-    return _;
-};
 
 /***
  *

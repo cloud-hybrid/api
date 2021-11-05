@@ -31,3 +31,5 @@ export const Cast = (obj = []) => {
 
     return _;
 };
+
+export default Cast;
