@@ -8,10 +8,12 @@
     },
     "type": "module",
     "dependencies": {
-        "octokit": "^1.7.0",
-        "@cloud-technology/api-library": "cloud-hybrid/api-library#Development"
+        "@cloud-technology/api-library": "cloud-hybrid/api-library#d8d6fc208802f95e96547cd39f8a5f944caee02c"
     },
     "devDependencies": {
-        "@types/express": "^4.17.13"
+        "@types/express": "^4.17.13",
+        "@types/compression": "^1.7.2",
+        "@types/mongodb": "^4.0.7",
+        "@types/mongoose": "^5.11.97"
     }
 }
