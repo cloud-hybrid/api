@@ -1,4 +1,4 @@
-import { Octokit } from "octokit";
+import { Octokit } from "@cloud-technology/api-library";
 
 const API = new Octokit({ auth: process.env["GitHub-Token"] });
 
