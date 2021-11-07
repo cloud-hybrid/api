@@ -1,5 +1,3 @@
-import * as FS from "fs";
-
 import { Library } from "@cloud-technology/api-library";
 
 import { Generator } from "./../utilities/configuration.js";
@@ -7,9 +5,10 @@ import { Generator } from "./../utilities/configuration.js";
 export const Controller = Library.Router();
 
 Controller.get("/", async (request, response) => {
-    const Package = JSON.parse(FS.readFileSync("package.json"));
+    const Package = process.env["Package"];
 
     const $ = Generator(request, Package);
+
     const Body = Package["version"];
 
     /// HTTP(s) Response

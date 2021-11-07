@@ -2,7 +2,9 @@ import { Library } from "@cloud-technology/api-library";
 
 export const Application = Library.API();
 
-Application.listen(8080, "localhost", async () => {
+await import("./../.ci/settings.js");
+
+Application.listen(process.env["Server"]["Port"], "localhost", async () => {
     const Import = async () => {
         return Promise.allSettled((
             [
@@ -21,7 +23,7 @@ Application.listen(8080, "localhost", async () => {
 
     Application.use("/api/v1", Controller);
 }).on("listening", async () => {
-    console.log("Server running on port 8080");
-    console.log("   - http://localhost:8080");
+    console.log("Server Successfully Started via Port" + " " + process.env["Server"]["Port"]);
+    console.log("  - http://localhost" + ":" + process.env["Server"]["Port"] + "/api/v1");
     console.log("");
 });

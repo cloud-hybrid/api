@@ -4,18 +4,13 @@ import * as Assertion from "assert";
 
 const Variables = [
     [ "CI", typeof Boolean() ],
-    [ "GitHub-API", typeof String() ],
-    [ "GitHub-Token", typeof String() ],
-    [ "GitHub-Organization", typeof String() ],
-    [ "GitLab-Token", typeof String() ],
-    [ "GitLab-API", typeof String() ],
+    [ "GitHub", typeof Object() ],
+    [ "GitLab", typeof Object() ],
     [ "Server", typeof String() ],
     [ "Environment", typeof String() ]
 ];
 
 const Content = () => String(FS.readFileSync(".env", { encoding: "UTF-8" }));
-
-console.debug(Content());
 
 const Error = (Variable) => String("Environment Variable" + " (" + Variable[0] + ")" + " " + "Type !:=" + " " + Variable[1]);
 

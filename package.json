@@ -1,16 +1,13 @@
 {
     "name": "@cloud-technology/api",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "description": "...",
     "main": "src/index.js",
+    "type": "module",
     "scripts": {
         "start": "node src/index.js"
     },
-    "type": "module",
     "dependencies": {
         "@cloud-technology/api-library": "cloud-hybrid/api-library#Development"
-    },
-    "devDependencies": {
-        "@cloud-technology/api-library": "cloud-hybrid/api-library#Development"
-    }
+    }, "ci-cd": ".ci"
 }
