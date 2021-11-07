@@ -1,6 +1,6 @@
 import { Library } from "@cloud-technology/api-library";
 
-import { Generator } from "@cloud-technology/api/src/utilities/configuration.js";
+import { Generator } from "./../../utilities/configuration.js";
 
 import { Query, Projects, Pages, Empties, Total } from "./projects.js";
 

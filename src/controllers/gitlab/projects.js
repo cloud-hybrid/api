@@ -1,4 +1,4 @@
-import { Call } from "@cloud-technology/api/src/utilities/request.js";
+import { Call } from "./../../utilities/request.js";
 
 /***
  *

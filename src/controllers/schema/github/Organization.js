@@ -1,6 +1,6 @@
 import { Library } from "@cloud-technology/api-library";
 
-import { default as flatten } from "@cloud-technology/api/src/utilities/flatten.js";
+import { default as flatten } from "../../../utilities/flatten.js";
 
 /// @octokit/openapi-types/types.d.ts
 const API = new Library.Octokit.Octokit({ auth: process.env["GitHub-Token"] });

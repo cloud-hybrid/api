@@ -2,9 +2,9 @@ import * as FS from "fs";
 
 import { Library } from "@cloud-technology/api-library";
 
-import { Generator } from "@cloud-technology/api/src/utilities/configuration.js";
+import { Generator } from "./../utilities/configuration.js";
 
-const Controller = Library.Router();
+export const Controller = Library.Router();
 
 Controller.get("/", async (request, response) => {
     const Package = JSON.parse(FS.readFileSync("package.json"));
@@ -30,5 +30,3 @@ Controller.get("/", async (request, response) => {
 Controller.get("/health", function (req, res) {
     res.send("Online");
 });
-
-export default Controller;

@@ -1,6 +1,6 @@
 import { Library } from "@cloud-technology/api-library";
 
-export const Application = Library.Framework();
+export const Application = Library.API();
 
 Application.listen(8080, "localhost", async () => {
     const Import = async () => {

@@ -1,6 +1,6 @@
 import { Library } from "@cloud-technology/api-library";
 
-import { Generator } from "@cloud-technology/api/src/utilities/configuration.js";
+import { Generator } from "../../utilities/configuration.js";
 
 import { default as GitHub } from "./github/index.js";
 import { default as GitLab } from "./gitlab/index.js";
