@@ -1,4 +1,4 @@
-import { Call } from "./../../utilities/request.js";
+import { Call } from "./../../../utilities/request.js";
 
 /***
  *
@@ -34,15 +34,15 @@ export const Query = async (page = 1, items = 1) => {
     const $ = (
         await Call({
             path: process.env["GitLab"]["Projects"] + "?"
-                  + [ "page", page ].join("=")
-                  + "&"
-                  + [ "per_page", items ].join("="),
+                + [ "page", page ].join("=")
+                + "&"
+                + [ "per_page", items ].join("="),
             host: process.env["GitLab"]["Host"],
             port: 443,
             requestCert: true,
             rejectUnauthorized: false
         }, {
-            "PRIVATE-TOKEN": process.env["GitLab-Token"]
+            "PRIVATE-TOKEN": process.env["GitLab"]["Token"]
         })
     );
 
@@ -53,7 +53,7 @@ export const Query = async (page = 1, items = 1) => {
 
 /***
  *
- * @returns {Promise<number>}
+ * @returns {Promise<{Data: number}>}
  *
  * @constructor
  *
@@ -61,15 +61,15 @@ export const Query = async (page = 1, items = 1) => {
 
 export const Total = async () => {
     const $ = await Query(1, 1);
-    return Number($.Headers["x-total"]);
-}
+    return { Data: Number($.Headers["x-total"]) };
+};
 
 /***
  *
  * @param page
  * @param items
  *
- * @returns {Promise<{Attributes: {}, Projects: *[]}>}
+ * @returns {Promise<{Data: {Attributes: {}, Projects: *[]}}>}
  *
  * @constructor
  */
@@ -101,7 +101,7 @@ export const Projects = async (page = 1, items = 20) => {
         });
     }
 
-    return Data;
+    return { Data };
 }
 
 /***
@@ -109,7 +109,7 @@ export const Projects = async (page = 1, items = 20) => {
  * @param page
  * @param items
  *
- * @returns {Promise<{Pages: {}, Attributes: {}}>}
+ * @returns {Promise<{Data: {Pages: {}, Attributes: {}}}>}
  *
  * @constructor
  */
@@ -137,12 +137,12 @@ export const Pages = async (page = 1, items = 20) => {
         Data.Pages[next] = $.Response;
     }
 
-    return Data;
+    return { Data };
 }
 
 /***
  *
- * @returns {Promise<*[]>}
+ * @returns {Promise<{Data: *[]}>}
  *
  * @constructor
  *
@@ -151,7 +151,7 @@ export const Pages = async (page = 1, items = 20) => {
 export const Empties = async () => {
     const Data = [];
 
-    const $ = await Projects(1, 100);
+    const $ = (await Projects(1, 100)).Data;
 
     $.Projects.forEach((Project, Index) => {
         if (Project["empty_repo"] === true) {
@@ -159,6 +159,11 @@ export const Empties = async () => {
         }
     });
 
-    return Data;
-}
+    return { Data };
+};
 
+export const Module = {
+    Query, Total, Projects, Pages, Empties
+};
+
+export default Module;

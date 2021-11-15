@@ -1,20 +1,6 @@
 import * as HTTPs from "https";
 
 /***
- * HTTP(s) Request Configuration Object
- */
-
-const Schema = {
-    host: typeof String,
-    port: typeof Number,
-    path: typeof String,
-    method: typeof String,
-    rejectUnauthorized: typeof Boolean,
-    requestCert: typeof Boolean,
-    agent: typeof Boolean
-};
-
-/***
  *
  * @param host {string}
  * @param port {number}
@@ -90,7 +76,7 @@ export const Query = (settings, headers = null) => new Promise((resolve, reject)
  * @param settings {Configuration}
  * @param headers {{}}
  *
- * @returns {Promise<{Status: {number}, Response: {string}, Message: {string}, Headers: {}, Method: {string}, URL: {string}}>}
+ * @returns {Promise<{}>}
  *
  * @constructor
  */
@@ -110,6 +96,7 @@ export const Call = async (settings, headers = null) => {
                 } else if ( response.statusCode === 404 ) { /// Endpoint not Found
                     return resolve(JSON.stringify({ Status: response.statusCode, Message: response.statusMessage }, null, 4));
                 } else {
+                    console.warn("[Warning]", response);
                     return reject(new Error("[Error]" + " " + String(response.statusCode)));
                 }
             }

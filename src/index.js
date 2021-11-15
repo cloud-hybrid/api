@@ -3,7 +3,6 @@ import { Library } from "@cloud-technology/api-library";
 export const Application = Library.API();
 
 await import("./../.ci/settings.js");
-
 Application.listen(process.env["Server"]["Port"], "localhost", async () => {
     const Import = async () => {
         return Promise.allSettled((
